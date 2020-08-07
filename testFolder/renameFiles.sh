@@ -15,11 +15,10 @@ echo "$files" | while read file; do # looping through files we received
     echo "$newfilename"
     echo "$filename"
     echo "removing special characters" # echo debug information
-    
     newfilepath="$path/$newfilename.$extension"  
     $(mv "$file" "$newfilepath") # rename the file to new file name  
   else
-     echo "no special charcters in $newextensionfilename" # if so skip the file
+     echo "no special charcters in $newextensionfilename file name" # if so skip the file
   fi
   if [[ (${#newextensionfilename} -lt 32) ]]; then
    echo "$newextensionfilename length is already fine" # if so skip the file
