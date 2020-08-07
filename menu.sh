@@ -1,50 +1,75 @@
 #/bin/sh
 while true; do
   header='What do you wish to do: '
-  menu=("Check files in folder ./testFolder/Folder one/Folder Two" "Reset files in folder ./testFolder/Folder one/Folder Two" "Read passwd[default]" "Read passwd[expected]" "Read passwd[default] - debug mode" "Read passwd[expected] - debug mode" "Exit")
+  menu=("[BASH]Check files in folder ./testFolder/Folder one/Folder Two" "[BASH]Reset files in folder ./testFolder/Folder one/Folder Two" "[BASH]Read passwd[default]" "[BASH]Read passwd[expected]" "[BASH]Read passwd[default] - debug mode" "[BASH]Read passwd[expected] - debug mode" "[Perl]Check files in folder ./testFolder/Folder one/Folder Two" "[Perl]Read passwd[default]" "[Perl]Read passwd[expected]" "[Perl]Read passwd[default] - debug mode" "[Perl]Read passwd[expected] - debug mode" "Exit")
   
   select option in "${menu[@]}"; do
     case $option in
-      "Check files in folder ./testFolder/Folder one/Folder Two")
+      "[BASH]Check files in folder ./testFolder/Folder one/Folder Two")
         echo "Checking files in ./testFolder/Folder one/Folder Two folder"
         cd ./testFolder
         ./renameFiles.sh
         cd ..
         break
         ;;
-      "Reset files in folder ./testFolder/Folder one/Folder Two")
+      "[BASH]Reset files in folder ./testFolder/Folder one/Folder Two")
         echo "Resetting files in ./testFolder/Folder one/Folder Two"
         cd ./testFolder
         ./resetFiles.sh
         cd ..
         break
         ;;
-      "Read passwd[default]")
+      "[BASH]Read passwd[default]")
         echo "Reading passwd with the data provided in the task"
         cd ./testFolder
         ./readPasswd.sh
         cd ..
         break
         ;;
-      "Read passwd[expected]")
+      "[BASH]Read passwd[expected]")
         echo "Reading passwd with the expected output"
         cd ./testFolder
         ./readPasswd.sh -f"passwdexpected"
         cd ..
         break
         ;;
-        "Read passwd[default] - debug mode")
+      "[BASH]Read passwd[default] - debug mode")
         echo "Reading passwd with the data provided in the task"
         cd ./testFolder
         ./readPasswd.sh -d
         cd ..
         break
         ;;
-      "Read passwd[expected] - debug mode")
+      "[BASH]Read passwd[expected] - debug mode")
         echo "Reading passwd with the expected output"
         cd ./testFolder
         ./readPasswd.sh -f"passwdexpected" -d
         cd ..
+        break
+        ;;
+       "[Perl]Check files in folder ./testFolder/Folder one/Folder Two")
+        echo "Checking files in ./testFolder/Folder one/Folder Two folder using Perl"
+        perl ./testFolder/renameFiles.pl
+        break
+        ;;
+       "[Perl]Read passwd[default]")
+        echo "Reading passwd with the data provided in the task"
+        perl ./testFolder/readPasswd.pl
+        break
+        ;;
+      "[Perl]Read passwd[expected]")
+        echo "Reading passwd with the expected output using Perl"
+        perl ./testFolder/readPasswd.pl -filename="passwdexpected"
+        break
+        ;;
+      "[Perl]Read passwd[default] - debug mode")
+        echo "Reading passwd with the data provided in the task using Perl"
+        perl ./testFolder/readPasswd.pl -debug
+        break
+        ;;
+      "[Perl]Read passwd[expected] - debug mode")
+        echo "Reading passwd with the expected output using Perl" 
+        perl ./testFolder/readPasswd.pl -filename="passwdexpected" -debug
         break
         ;;
       "Exit")

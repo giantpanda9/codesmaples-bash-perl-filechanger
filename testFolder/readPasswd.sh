@@ -19,3 +19,4 @@ else
   echo "$(awk -F':' '$3 > 500 { print $1 " " $3 }' "$path" )" # and display the additional uid
 fi
 
+exit
