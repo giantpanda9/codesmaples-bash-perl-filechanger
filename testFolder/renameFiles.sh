@@ -30,6 +30,7 @@ echo "$files" | while read file; do # looping through files we received
    # 8+3 < 32 - just small funny thing related to DOS
    shortfilename=${newfilename:0:8} # cut the file name to 8 characters
    shortfilename="$shortfilename$i" # and attach the count value, if special symbols would be allowed then it will be ~1 - more like in DOS
+   # adding the counter value to meet the requirement of file name to be unique - this will break the 8.3 DOS format
    ((i=i+1)) # increase the coutn value
    shortfilepath="$path/$shortfilename.$extension" # build the new file path
    echo "cutting the $newextensionfilename file name length" # echo debug information

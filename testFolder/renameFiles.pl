@@ -20,7 +20,7 @@ for my $file (@files) { # loop through the files acquired
       my $newfilename = $oldfilename;
       $newfilename =~ s/[^a-zA-Z0-9]//g; #removing special charcters
       $newfilename = substr($newfilename, 0, 8); # and cut the file to 8.+3
-      $newfilename .= $i; # attach counter
+      $newfilename .= $i; # add the counter value to meet the requirement of file name to be unique - this will break the 8.3 DOS format
       print "Renaming " . $oldfilename . " to " .$newfilename . "\n"; # and rename the file
       $newfilename = $filepath . $newfilename . $extension;
       rename $file, $newfilename or die "Cannot rename file: $!";
